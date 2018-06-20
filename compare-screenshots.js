@@ -1,5 +1,6 @@
 import Rembrandt from 'rembrandt'
 import Colors from 'colors'
+const fs = require('fs');
 
 
 export default function (screenshotPath, modelPath) {
@@ -13,19 +14,20 @@ export default function (screenshotPath, modelPath) {
 	  maxOffset: 0,	 
 	  renderComposition: true, // Should Rembrandt render a composition image? 
 	  compositionMaskColor: Rembrandt.Color.RED // Color of unmatched pixels 
-	})
+	});
 	 
 	// Run the comparison 
     return rembrandt.compare()
 	  .then(function (result) {
-	  	var difference = 'Difference: ' + (result.threshold * 100).toFixed(2) + '%';
+	  	let difference = 'Difference: ' + (result.threshold * 100).toFixed(2) + '%';
 
 	    if (result.passed) {
 	    	console.log(" Images are equal".gray);	    	
 	    } else {
 	    	console.log("Passed: false".bold.green);
 	    	console.log(difference.bold.green);
-	    	throw new Error("Images are different".bold.red);
+	    	fs.writeFileSync('./screenshots/diff.png', result.compositionImage);
+	    	throw new Error("Images are different");
 	    }
 	  })
 }
