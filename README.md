@@ -21,6 +21,10 @@ Before running the application, configure your environment:
 - Download the example;
 - Switch to the directory where you saved it;
 - Install [node-canvas](https://github.com/Automattic/node-canvas/wiki/Installation---Windows) for Node.js
+```bash
+brew update && brew install pkg-config pixman cairo canvas giflib libjpeg
+npm install canvas
+```
 - Install [TestCafe](https://github.com/DevExpress/testcafe), [Rembrant](https://github.com/imgly/rembrandt), [Colors](https://github.com/Marak/colors.js) and [UAParser](https://github.com/faisalman/ua-parser-js) modules using the following command line:
  ```javascript
  npm install
