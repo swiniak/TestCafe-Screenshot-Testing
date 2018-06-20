@@ -1,22 +1,22 @@
-import compareScreenshots from './modules/compare-screenshots'
+import compareScreenshots from '../compare-screenshots'
 import { ClientFunction } from 'testcafe'
 import { UAParser } from 'ua-parser-js'
 
 fixture `Getting Started`
     .page `http://devexpress.github.io/testcafe/example`;
 
-const screenshotPath = "./screenshots/",
+const screenshotPath = __dirname + "/screenshots/",
 	  modelPath = "models/";
 
 test('Screenshot test', async t => {
     const userAgent = await t.eval(() => window.navigator.userAgent);
-    const browserName = new UAParser().setUA(userAgent).getBrowser().name;
+    const browserName = new UAParser().setUA(userAgent).getBrowser().name.toLowerCase();
 
-	var testScreenshotPath = "tests/",
-		imgName = browserName + ".png";
+	let testScreenshotPath = "tests/";
+	let imgName = browserName + ".png";
 
-    var screenshotName = screenshotPath + testScreenshotPath + imgName,
-        screenshotModel = screenshotPath + modelPath    + imgName;
+    let screenshotName = screenshotPath + testScreenshotPath + imgName;
+    let screenshotModel = screenshotPath + modelPath    + imgName;
 
     await t
         .typeText('#developer-name', 'John Smith')
