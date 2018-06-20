@@ -1,11 +1,12 @@
 {
-	"name" : "Screenshot_Testing",
-	"description" : "TestCafe screenshot testing tasks",
-	"dependencies" : {
-		"testcafe" : "0.14.0",
-		"rembrandt" : "0.0.8",
-		"colors" : "1.1.2",
+	"name": "Screenshot_Testing",
+	"description": "TestCafe screenshot testing tasks",
+	"dependencies": {
+		"canvas": "^1.6.11",
+		"colors": "1.1.2",
+		"rembrandt": "0.0.8",
+		"testcafe": "^0.20.2",
 		"ua-parser-js": "0.7.12"
 	},
-	"main" : "index"
+	"main": "index"
 }
